@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100lvh;
+  width: 100lvw;
+  background-color: rgba(28, 224, 158, 0.3);
+}
+
+.inside-container {
+  height: 200px;
+  width: 200px;
+  border-top-color: rgb(49, 92, 235);
+  border-right-color: rgb(30, 189, 186);
+  border-bottom-color: rgb(63, 181, 194);
+  border-left-color: rgb(45, 7, 235);
+  border-width: 20px;
+  border-radius: 50%;
+  border-style: dotted;
+}
+
+.other-container1 {
+  height: 100px;
+  width: 100px;
+  border-top-color: rgb(49, 92, 235);
+  border-right-color: rgb(30, 189, 186);
+  border-bottom-color: rgb(63, 181, 194);
+  border-left-color: rgb(45, 7, 235);
+  border-width: 50px;
+  border-radius: 50%;
+  margin: 300px;
+}
+
+.inside-container:hover{
+  animation: anime 8s linear infinite;
+}
+
+.other-container1 {
+    animation:  minecraft 7s ease-in-out infinite;
+  }
+
+@keyframes anime {
+  0% {
+    transform: rotate(0deg);
+    border-top: 25px dotted rgba(92, 230, 161);
+    border-bottom: 25px dotted rgba(63, 174, 194);
+    border-left: 25px dotted rgba(45, 7, 235);
+    border-right: 25px dotted rgba(30, 189, 186);
+    border-width: 20px;
+  }
+
+  50% {
+    border-top: 25px dotted rgb(30, 189, 186);
+    border-bottom: 25px dotted rgb(92, 230, 161);
+    border-left: 25px dotted rgb(63, 174, 194);
+    border-right: 25px dotted rgb(45, 7, 235);
+    border-width: 40px;
+  }
+
+  75% {
+    border-top: 25px dotted rgba(45, 7, 235);
+    border-bottom: 25px dotted rgba(30, 189, 186);
+    border-left: 25px dotted rgba(92, 230, 161);
+    border-right: 25px dotted rgba(63, 174, 194);
+    border-width: 45px;
+  }
+
+  100% {
+    border-top: 25px dotted rgba(92, 230, 161);
+    border-bottom: 25px dotted rgba(63, 174, 194);
+    border-left: 25px dotted rgba(45, 7, 235);
+    border-right: 25px dotted rgba(30, 189, 186);
+    border-width: 20px;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes minecraft {
+  0% {
+    transform: rotate(0deg);
+    border-top: 25px dotted rgba(92, 230, 161);
+    border-bottom: 25px dotted rgba(63, 174, 194);
+    border-left: 25px dotted rgba(45, 7, 235);
+    border-right: 25px dotted rgba(30, 189, 186);
+  }
+
+  50% {
+    border-top: 25px dotted rgb(30, 189, 186);
+    border-bottom: 25px dotted rgb(92, 230, 161);
+    border-left: 25px dotted rgb(63, 174, 194);
+    border-right: 25px dotted rgb(45, 7, 235);
+  }
+
+  75% {
+    border-top: 25px dotted rgba(45, 7, 235);
+    border-bottom: 25px dotted rgba(30, 189, 186);
+    border-left: 25px dotted rgba(92, 230, 161);
+    border-right: 25px dotted rgba(63, 174, 194);
+  }
+
+  100% {
+    border-top: 25px dotted rgba(92, 230, 161);
+    border-bottom: 25px dotted rgba(63, 174, 194);
+    border-left: 25px dotted rgba(45, 7, 235);
+    border-right: 25px dotted rgba(30, 189, 186);
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,70 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100lvh;
+  width: 100lvw;
+  background-color: rgba(45, 42, 42, 0.5);
+}
+
+button{
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50%;
+  width: 25%;
+  border:2px solid rgb(226, 207, 207);
+  border-radius: 5px;
+  background-color: rgba(0, 7, 4, 0.3);
+}
+
+.button1 {
+  background-color: rgba(11, 240, 11, 0.196);
+  color: rgba(0, 128, 0);
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgba(0, 128, 0);
+  font-size: 14px;
+  width: 120px;
+  margin: 10px;
+  padding: 15px 30px;
+  cursor: pointer;
+  text-align: center;
+  transition: color 1s ease-in-out, border-color 1s ease-in-out;
+}
+
+.button2 {
+  @extend .button1;
+  background-color: rgba(255, 0, 0, 0.292);
+  color: rgba(255, 0, 0);
+  border-color: rgba(255, 0, 0);
+}
+
+.button3 {
+  @extend .button1;
+  background-color: rgba(128, 0, 128, 0.301);
+  color: rgba(128, 0, 128);
+  border-color: rgba(128, 0, 128);
+}
+
+.button1:hover {
+  color: black;
+  border-color: transparent;
+}
+
+.button2:hover {
+  @extend .button1; 
+ background-color: rgba(255, 0, 0, 0.292);
+}
+
+.button3:hover {
+  @extend.button1; 
+  background-color: rgba(128, 0, 128, 0.301);
+}
