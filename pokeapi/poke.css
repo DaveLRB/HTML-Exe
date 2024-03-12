@@ -1,0 +1,103 @@
+body {
+    background-image: url('https://pbs.twimg.com/media/FNV6oa2XwAgUqaW.jpg');
+    background-size:contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    text-align: center;
+    font-size: 80px;
+    margin:20px 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 2px 2px 2px rgb(16, 15, 15);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 10px;
+    max-width: fit-content;
+    box-shadow: 2px 2px 2px rgb(16, 15, 15);
+    border:2px solid rgba(255, 255, 255, 0.8);
+}
+
+h3{
+    text-align: center;
+    font-size: 20px;
+    margin:20px 20px;
+}
+
+h3:first-letter, span:first-letter { 
+    text-transform: uppercase; 
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+span{
+    border-bottom:3px solid;
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: white;
+    margin: 5px;
+    padding: 10px 40px;
+    font-size: 25px;
+}
+
+.card{
+    border: 5px solid rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:40%;
+    height: max-content;
+    margin: 10px auto;
+    padding:3em 1em;
+}
+
+.attributes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    list-style-type: none;
+    padding: 10px 40px;
+    margin: 0;
+    border: 5px solid;
+    border-radius: 25px;
+    font-size: 15px;
+}
+
+.spAttributes{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+
+li{
+    padding:1em;
+    
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    border:5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    
+}
+
+img:hover{
+    transform: scale(1.4);
+    transition: transform 1000ms ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
