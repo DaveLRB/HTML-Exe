@@ -31,7 +31,7 @@ h3:first-letter, span:first-letter {
     text-transform: uppercase; 
 }
 
-.container{
+.cards-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,6 +39,40 @@ h3:first-letter, span:first-letter {
     width: 100vw;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    flex-direction: column;
+}
+
+.container > * {
+    order: 2; 
+}
+
+.input-container[type="number"] {
+    order: 1;
+    padding: 10px 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 5%;
+    border: 5px solid rgba(16, 16, 16, 0.8);
+}
+
+.input-container::-webkit-outer-spin-button,
+.input-container::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
 
 span{
     border-bottom:3px solid;

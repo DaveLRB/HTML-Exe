@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const container = document.querySelector(".container");
-  
-    var typeColors = {
-      normal: "rgba(168, 168, 120, 0.8)",
+  const container = document.querySelector(".container");
+  const cardsContainer = document.createElement("div");
+  cardsContainer.classList.add("cards-container");
+  container.appendChild(cardsContainer);
+
+  var typeColors = {
+    normal: "rgba(168, 168, 120, 0.8)",
     fire: "rgba(240, 128, 48, 0.8)",
     water: "rgba(104, 144, 240, 0.8)",
     electric: "rgba(248, 208, 48, 0.8)",
@@ -19,11 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
     dragon: "rgba(112, 56, 248, 0.8)",
     dark: "rgba(112, 88, 72, 0.8)",
     steel: "rgba(184, 184, 208, 0.8)",
-    fairy: "rgba(238, 153, 172, 0.8)"
-    };
-  
-    var typeColorBorders = {
-      normal: "rgba(168, 168, 120)",
+    fairy: "rgba(238, 153, 172, 0.8)",
+  };
+
+  var typeColorBorders = {
+    normal: "rgba(168, 168, 120)",
     fire: "rgba(240, 128, 48)",
     water: "rgba(104, 144, 240)",
     electric: "rgba(248, 208, 48)",
@@ -40,84 +43,89 @@ document.addEventListener("DOMContentLoaded", function () {
     dragon: "rgba(112, 56, 248)",
     dark: "rgba(112, 88, 72)",
     steel: "rgba(184, 184, 208)",
-    fairy: "rgba(238, 153, 172)"
-    };
-  
-    const numberOfPokemons = parseInt(prompt("Enter the number of pokemons you want to show:"));
-  
-    const url =`https://pokeapi.co/api/v2/pokemon?limit=${numberOfPokemons}`;
-  
+    fairy: "rgba(238, 153, 172)",
+  };
+
+  const input = document.createElement("input");
+  input.type = "number";
+  input.placeholder = "Enter pokemon number:";
+  container.appendChild(input);
+  input.classList.add("input-container");
+
+  input.addEventListener("change", () => {
+    const numberOfPokemons = input.value;
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=${numberOfPokemons}`;
+
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         const pokemonList = data.results;
+        cardsContainer.innerHTML = "";
         pokemonList.forEach((pokemon) => {
           fetch(pokemon.url)
             .then((response) => response.json())
             .then((pokemonData) => {
               const card = document.createElement("div");
               card.classList.add("card");
-  
+
               const image = document.createElement("img");
               image.src =
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
                 pokemonData.id +
                 ".png";
               image.alt = pokemonData.name;
-  
-              
-  
+
               const name = document.createElement("h3");
               name.textContent = pokemonData.name;
-  
+
               const type = document.createElement("span");
-  
+
               const pokemonType = pokemonData.types[0].type.name;
-  
+
               type.textContent = pokemonType;
               card.style.backgroundColor = typeColors[pokemonType];
               card.style.borderColor = typeColorBorders[pokemonType];
               type.style.backgroundColor = typeColors[pokemonType];
               type.style.borderColor = typeColorBorders[pokemonType];
-              
+
               const attributes = document.createElement("ul");
               attributes.classList.add("attributes");
               attributes.style.borderColor = typeColorBorders[pokemonType];
-  
+
               const hp = document.createElement("li");
               const hpText = document.createElement("strong");
               hpText.textContent = "HP: ";
               hp.appendChild(hpText);
-  
+
               const hpValue = document.createTextNode(
                 pokemonData.stats.find((stat) => stat.stat.name === "hp")
                   .base_stat
               );
-  
+
               hp.appendChild(hpValue);
-  
+
               const attack = document.createElement("li");
               const attackText = document.createElement("strong");
               attackText.textContent = "Attack: ";
               attack.appendChild(attackText);
-  
+
               const attackValue = document.createTextNode(
                 pokemonData.stats.find((stat) => stat.stat.name === "attack")
                   .base_stat
               );
               attack.appendChild(attackValue);
-  
+
               const defense = document.createElement("li");
               const defenseText = document.createElement("strong");
               defenseText.textContent = "Defense: ";
               defense.appendChild(defenseText);
-  
+
               const defenseValue = document.createTextNode(
                 pokemonData.stats.find((stat) => stat.stat.name === "defense")
                   .base_stat
               );
               defense.appendChild(defenseValue);
-  
+
               const spAttack = document.createElement("li");
               const spAttackText = document.createElement("strong");
               spAttackText.textContent = "Special Attack: ";
@@ -128,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ).base_stat
               );
               spAttack.appendChild(spAttackValue);
-  
+
               const spDefense = document.createElement("li");
               const spDefenseText = document.createElement("strong");
               spDefenseText.textContent = "Special Defense: ";
@@ -139,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ).base_stat
               );
               spDefense.appendChild(spDefenseValue);
-  
+
               const speed = document.createElement("li");
               const speedText = document.createElement("strong");
               speedText.textContent = "Speed: ";
@@ -149,45 +157,58 @@ document.addEventListener("DOMContentLoaded", function () {
                   .base_stat
               );
               speed.appendChild(speedValue);
-  
+
               const height = document.createElement("li");
               const heightText = document.createElement("strong");
               heightText.textContent = "Height: ";
               height.appendChild(heightText);
               const heightValue = document.createTextNode(pokemonData.height);
               height.appendChild(heightValue);
-  
+
               const weight = document.createElement("li");
               const weightText = document.createElement("strong");
               weightText.textContent = "Weight: ";
               weight.appendChild(weightText);
               const weightValue = document.createTextNode(pokemonData.weight);
               weight.appendChild(weightValue);
-  
+
               const spAttributes = document.createElement("div");
               spAttributes.classList.add("spAttributes");
-  
+
               const ability = document.createElement("li");
               const abilityLabel = document.createElement("strong");
               abilityLabel.textContent = "Ability: ";
               ability.appendChild(abilityLabel);
-  
-              const abilityValue = document.createTextNode(
-                pokemonData.abilities[0].ability.name.charAt(0).toUpperCase() +
-                  pokemonData.abilities[0].ability.name.slice(1)
-              );
-              ability.appendChild(abilityValue);
-  
+
+              if (pokemonData.abilities.length > 0) {
+                const abilityValue = document.createTextNode(
+                  pokemonData.abilities[0].ability.name
+                    .charAt(0)
+                    .toUpperCase() +
+                    pokemonData.abilities[0].ability.name.slice(1)
+                );
+                ability.appendChild(abilityValue);
+              } else {
+                ability.textContent = "N/A";
+              }
+
               const hiddenAbility = document.createElement("li");
               const hiddenAbilityText = document.createElement("strong");
               hiddenAbilityText.textContent = "Hidden Ability: ";
               hiddenAbility.appendChild(hiddenAbilityText);
-              const hiddenAbilityValue = document.createTextNode(
-                pokemonData.abilities[1].ability.name.charAt(0).toUpperCase() +
-                  pokemonData.abilities[1].ability.name.slice(1)
-              );
-              hiddenAbility.appendChild(hiddenAbilityValue);
-  
+
+              if (pokemonData.abilities.length > 1) {
+                const hiddenAbilityValue = document.createTextNode(
+                  pokemonData.abilities[1].ability.name
+                    .charAt(0)
+                    .toUpperCase() +
+                    pokemonData.abilities[1].ability.name.slice(1)
+                );
+                hiddenAbility.appendChild(hiddenAbilityValue);
+              } else {
+                hiddenAbility.textContent = "N/A";
+              }
+
               attributes.appendChild(hp);
               attributes.appendChild(attack);
               attributes.appendChild(defense);
@@ -197,16 +218,16 @@ document.addEventListener("DOMContentLoaded", function () {
               attributes.appendChild(height);
               attributes.appendChild(weight);
               attributes.appendChild(spAttributes);
-  
+
               spAttributes.appendChild(ability);
               spAttributes.appendChild(hiddenAbility);
-  
+
               card.appendChild(image);
               card.appendChild(name);
               card.appendChild(type);
               card.appendChild(attributes);
-  
-              container.appendChild(card);
+
+              cardsContainer.appendChild(card);
             })
             .catch((error) => {
               console.error("Error fetching Pokemon details:", error);
@@ -217,5 +238,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error fetching Pokemon list:", error);
       });
   });
-  
-  
+});
